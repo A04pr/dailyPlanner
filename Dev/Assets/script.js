@@ -1,6 +1,8 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+
+var hour = dayjs().hour();
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -21,3 +23,18 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+console.log(dayjs().format('dddd, MMMM DD[th]'))
+
+console.log(dayjs().hour())
+
+// Adds current date at top of calander
+if (dayjs().date() === 1) {
+  $('#currentDay').text(dayjs().format('dddd, MMMM DD[st]'));
+} else if (dayjs().date() === 2) {
+  $('#currentDay').text(dayjs().format('dddd, MMMM DD[nd]'));
+} else if (dayjs().date() === 3) {
+  $('#currentDay').text(dayjs().format('dddd, MMMM DD[rd]'));
+} else {
+  $('#currentDay').text(dayjs().format('dddd, MMMM DD[th]'));
+}
