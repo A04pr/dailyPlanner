@@ -88,3 +88,67 @@ $(function () {
     $('#currentDay').text(dayjs().format('dddd, MMMM DD[th]'));
   }
 });
+
+var hours = [
+  { time: "9 AM", 
+  fullDay: "9",
+  text: "" },
+  { time: "10 AM", 
+  fullDay: "10",
+  text: "" },
+  { time: "11 AM", 
+  fullDay: "11",
+  text: "" },
+  { time: "12 PM", 
+  fullDay: "12",
+  text: "" },
+  { time: "1 PM", 
+  fullDay: "13",
+  text: "" },
+  { time: "2 PM", 
+  fullDay: "14",
+  text: "" },
+  { time: "3 PM", 
+  fullDay: "15",
+  text: "" },
+  { time: "4 PM", 
+  fullDay: "16",
+  text: "" },
+  { time: "5 PM", 
+  fullDay: "17",
+  text: "" },
+]
+
+
+hours.forEach(function(timeBlock, index) {
+	var timeLabel = timeBlock.time;
+	var blockColor = color(timeBlock);
+	var row =
+		'<div class="row time-block" id="' +
+		index +
+		'"><div class="no-gutters input-group"><div class="col-2 col-md-1 hour text-center py-3">' +
+		timeLabel +
+		'</div><textarea class="col-8 col-md-10 description ' +
+		blockColor +
+		'" rows="3">' +
+		timeBlock.text +
+		'</textarea><button class="btn saveBtn col-2 col-md-1" type="submit"><i class="fas fa-save" aria-hidden="true"></i></button></div></div>';
+
+	/* Adding rows to container div */
+	$(".blocks").append(row);
+
+});
+
+function color(timeBlock) {
+	var currentHour = Number(dayjs().format('H'));
+	var blockHour = timeBlock.fullDay;
+  console.log(currentHour);
+  console.log(blockHour);
+	if (currentHour < blockHour) {
+		return "future";
+	} else if (currentHour > blockHour === true) {
+		return "past";
+	} else {
+		return "present";
+	}
+}
