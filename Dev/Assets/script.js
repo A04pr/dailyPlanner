@@ -14,68 +14,6 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
 
-  var hour = dayjs().hour() - 9;
-
-  i = 0;
-
-  //function to change all 'past' hour blocks to have the past class
-  for (; i < hour; i++){
-    $('#hours').children().eq(i).removeClass('future')
-    $('#hours').children().eq(i).removeClass('present')
-    $('#hours').children().eq(i).removeClass('past')
-    $('#hours').children().eq(i).addClass('past')
-  }
-
-  //function to change all 'future' hour blocks to have the future class
-  for (i = hour+1; i < 24; i++){
-    $('#hours').children().eq(i).removeClass('future')
-    $('#hours').children().eq(i).removeClass('present')
-    $('#hours').children().eq(i).removeClass('past')
-    $('#hours').children().eq(i).addClass('future')
-  }
-
-  //function to indicate the present hour block
-  if (hour == 0) {
-    $('#hours').children().eq(hour).removeClass('future')
-    $('#hours').children().eq(hour).removeClass('present')
-    $('#hours').children().eq(hour).removeClass('past')
-    $('#hours').children().eq(hour).addClass('present')
-  } else if (hour == 1) {
-    $('#hours').children().eq(hour).removeClass('future')
-    $('#hours').children().eq(hour).removeClass('present')
-    $('#hours').children().eq(hour).removeClass('past')
-    $('#hours').children().eq(hour).addClass('present')
-  } else if (hour == 2) {
-    $('#hours').children().eq(hour).removeClass('future')
-    $('#hours').children().eq(hour).removeClass('present')
-    $('#hours').children().eq(hour).removeClass('past')
-    $('#hours').children().eq(hour).addClass('present')
-  } else if (hour == 3) {
-    $('#hours').children().eq(hour).removeClass('future')
-    $('#hours').children().eq(hour).removeClass('present')
-    $('#hours').children().eq(hour).removeClass('past')
-    $('#hours').children().eq(hour).addClass('present')
-  } else if (hour == 4) {
-    $('#hours').children().eq(hour).removeClass('future')
-    $('#hours').children().eq(hour).removeClass('present')
-    $('#hours').children().eq(hour).removeClass('past')
-    $('#hours').children().eq(hour).addClass('present')
-  } else if (hour == 5) {
-    $('#hours').children().eq(hour).removeClass('future')
-    $('#hours').children().eq(hour).removeClass('present')
-    $('#hours').children().eq(hour).removeClass('past')
-    $('#hours').children().eq(hour).addClass('present')
-  } else if (hour == 6) {
-    $('#hours').children().eq(hour).removeClass('future')
-    $('#hours').children().eq(hour).removeClass('present')
-    $('#hours').children().eq(hour).removeClass('past')
-    $('#hours').children().eq(hour).addClass('present')
-  } else if (hour == 7) {
-    $('#hours').children().eq(hour).removeClass('future')
-    $('#hours').children().eq(hour).removeClass('present')
-    $('#hours').children().eq(hour).removeClass('past')
-    $('#hours').children().eq(hour).addClass('present')
-  }
 
   //adds current date to top of calander
   if (dayjs().date() === 1) {
@@ -152,3 +90,16 @@ function color(timeBlock) {
 		return "present";
 	}
 }
+
+$(".saveBtn").on("click", function() {
+  console.log("clicked")
+	var blockID = parseInt($(this).closest(".time-block").attr("id")
+	);
+  console.log(blockID)
+	var input = $.trim($(this).parent().children("textarea").val()
+	);
+  console.log(input)
+	hours[blockID].text = input;
+
+	localStorage.setItem("text", JSON.stringify(hours));
+});
