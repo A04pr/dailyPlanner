@@ -41,7 +41,7 @@ $(function () {
     var reminderText = timeBlock.reminder;
     var parse = JSON.parse(localStorage.getItem('reminder'));
     // If there is data saved in local storage for the [index] time block, it will print the saved text to the page
-    if (parse[index].reminder !== ""){
+    if (parse && parse[index] && parse[index].reminder !== "") {
       reminderText = parse[index].reminder;
     }
     var row =
