@@ -1,6 +1,3 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
@@ -14,11 +11,9 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
 
-  var hour = dayjs().hour() - 9;
-
-  i = 0;
-
   //function to change all 'past' hour blocks to have the past class
+  var hour = dayjs().hour() - 9;
+  i = 0;
   for (; i < hour; i++){
     $('#hours').children().eq(i).removeClass('future')
     $('#hours').children().eq(i).removeClass('present')
@@ -88,3 +83,4 @@ $(function () {
     $('#currentDay').text(dayjs().format('dddd, MMMM DD[th]'));
   }
 });
+
